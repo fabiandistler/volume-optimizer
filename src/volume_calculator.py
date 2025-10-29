@@ -1,6 +1,6 @@
 """Calculate recommended training volume adjustments for muscle group."""
 
-from .volume_data import volume_landmarks
+from src.volume_data import volume_landmarks
 
 
 def recommend_volume(
@@ -16,7 +16,7 @@ def recommend_volume(
         ):
             return f"Increase to at least {volume_landmarks['chest'][training_level]['MAV']} sets per week."
         elif (
-            current_sets > volume_landmarks["chest"]["beginner"]["MRV"]
+            current_sets > volume_landmarks["chest"][training_level]["MRV"]
             and recovered == "no"
         ):
             return f"Decrease to at most {volume_landmarks['chest'][training_level]['MRV']} sets per week."
