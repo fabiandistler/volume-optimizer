@@ -1,3 +1,5 @@
+"""Calculate recommended training volume adjustments for muscle group."""
+
 from .volume_data import volume_landmarks
 
 
