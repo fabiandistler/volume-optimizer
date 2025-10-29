@@ -42,3 +42,32 @@ def test_advanced_stalled_at_mrv():
         recovered="no",
     )
     assert result == "Decrease to at most 24 sets per week."
+
+
+def test_progress_yes():
+    """
+    If: Progress yes
+    Then: No change needed
+    """
+    result = recommend_volume(
+        current_sets=15,
+        training_level="advanced",
+        progress="yes",
+        recovered="yes",
+    )
+    assert result == "No change needed"
+
+
+def test_intermediate_no_progress_at_mav():
+    """
+    Wenn: Intermediate, 15 Sets, Making Progress
+    Dann: Reassess in two weeks
+    """
+
+    result = recommend_volume(
+        current_sets=15,
+        training_level="intermediate",
+        progress="no   ",
+        recovered="yes",
+    )
+    assert result == "Reassess in two weeks."

@@ -22,4 +22,4 @@ def recommend_volume(
             return f"Decrease to at most {volume_landmarks['chest'][training_level]['MRV']} sets per week."
     else:
         return "Reassess in two weeks."
-    return "Maintain current volume."
+    return "No change needed"
