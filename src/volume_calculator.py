@@ -10,7 +10,9 @@ def recommend_volume(
     if progress == "yes":
         return "No change needed"
     elif progress == "no":
-        if (
+        if current_sets < volume_landmarks["chest"][training_level]["MEV"]:
+            return f"Increase to at least {volume_landmarks['chest'][training_level]['MEV']} sets per week."
+        elif (
             current_sets < volume_landmarks["chest"][training_level]["MAV"]
             and recovered == "yes"
         ):
@@ -22,4 +24,4 @@ def recommend_volume(
             return f"Decrease to at most {volume_landmarks['chest'][training_level]['MRV']} sets per week."
     else:
         return "Reassess in two weeks."
-    return "No change needed"
+    raise ValueError("Invalid input parameters.")
