@@ -9,9 +9,15 @@ async def health_check():
     return {"message": "Everything is working fine!"}
 
 
-@app.get("/recommend/{current_sets}/{training_level}/{progress}/{recovered}")
-async def recommend(
+@app.get("/predict-volume/{current_sets}/{training_level}/{progress}/{recovered}")
+async def predict_volume_get(
     current_sets: int, training_level: str, progress: str, recovered: str
 ):
     result = recommend_volume(current_sets, training_level, progress, recovered)
-    return {"recommendation": result}
+    return {"volume_prediction": result}
+
+
+# @app.post("/predict-volume")
+# async def predict_volume_post(request: VolumeRequest):
+#   result = "TODO"
+#  return {"volume_prediction": result}
