@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from src.volume_calculator import recommend_volume
+from src.models import VolumeRequest
 
 app = FastAPI()
 
@@ -17,7 +18,12 @@ async def predict_volume_get(
     return {"volume_prediction": result}
 
 
-# @app.post("/predict-volume")
-# async def predict_volume_post(request: VolumeRequest):
-#   result = "TODO"
-#  return {"volume_prediction": result}
+@app.post("/predict-volume")
+async def predict_volume_post(request: VolumeRequest):
+    result = recommend_volume(
+        request.current_sets,
+        request.training_level,
+        request.progress,
+        request.recovered,
+    )
+    return {"volume_prediction": result}
