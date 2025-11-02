@@ -5,7 +5,7 @@ Recommends optimal weekly set volume for chest training.
 ## Installation
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ## Usage
